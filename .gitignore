@@ -1,0 +1,77 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+.env/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs_analysis.dat
+*.njsproj
+*.sln
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# SQLAlchemy
+*.sqlite
+*.db
+*.sqlite3
+
+# Pytest
+.cache/
+*.log
+
+# Coverage reports
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# pyre
+.pyre/
+
+# flake8
+.flake8
+
+# Pylint
+pylint-report.txt
+pylint-global.txt
+
+# Local environment
+*.local
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Alembic
+alembic.ini
+# Исключаем каталог миграций (можно исключить, если не хотите хранить миграции в репозитории)
+versions/
+# Исключаем любые сгенерированные файлы миграций, если вы храните их отдельно
+migrations/
