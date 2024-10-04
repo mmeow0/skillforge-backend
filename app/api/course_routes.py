@@ -1,5 +1,5 @@
 # app/api/course_routes.py
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from app.infrastructure.repositories.course_repository import CourseRepository
@@ -45,3 +45,13 @@ def create_course(course: CourseCreate, db: Session = Depends(get_db)):
     course_repo = CourseRepository(db)
     courseUseCase = CourseUseCase(course_repo)
     return courseUseCase.create_course(course)
+
+@router.delete("/{course_id}/", response_model=dict)
+def delete_course(course_id: int, db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    course_repo = CourseRepository(db)
+    course_use_case = CourseUseCase(course_repo)
+    try:
+        result = course_use_case.delete_course(course_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    return result

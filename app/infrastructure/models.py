@@ -9,7 +9,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
 
-    courses = relationship("UserCourse", back_populates="user")
+    courses = relationship("UserCourse", back_populates="user", cascade="all, delete-orphan")
 
 class Course(Base):
     __tablename__ = "courses"
@@ -20,7 +20,7 @@ class Course(Base):
     instructor_name = Column(String, nullable=True)
     instructor_image = Column(String, nullable=True)
 
-    subscribers = relationship("UserCourse", back_populates="course")
+    subscribers = relationship("UserCourse", back_populates="course", cascade="all, delete-orphan")
 
 class UserCourse(Base):
     __tablename__ = "user_courses"

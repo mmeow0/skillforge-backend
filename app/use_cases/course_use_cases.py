@@ -17,4 +17,10 @@ class CourseUseCase:
     def get_courses_with_subscription_info(self, user_id, skip=0, limit=10):
         return self.course_repository.get_courses_with_subscription_info(user_id, skip, limit)
     
+    def delete_course(self, course_id: int):
+        success = self.course_repository.delete_course(course_id)
+        if not success:
+            raise ValueError(f"Course with id {course_id} does not exist.")
+        return {"detail": "Course deleted successfully"}
+    
     

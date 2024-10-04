@@ -44,3 +44,11 @@ class CourseRepository:
             .limit(limit)
             .all()
         )
+    
+    def delete_course(self, course_id: int):
+        course = self.db.query(ORMCourse).filter(ORMCourse.id == course_id).first()
+        if course:
+            self.db.delete(course)
+            self.db.commit()
+            return True
+        return False
